@@ -684,7 +684,8 @@ int spi_read_chunked(struct flashctx *flash, uint8_t *buf, unsigned int start,
 	size_t start_address = start;
 	size_t end_address = len - start;
 	for (; len; len -= to_read, buf += to_read, start += to_read) {
-		to_read = min(chunksize, len);
+		/* Temporarily swithced from 'chunksize' to '256'. Necessary modification for IS25LQ040B.  */
+		to_read = min(256, len);
 		ret = spi_nbyte_read(flash, start, buf, to_read);
 		if (ret)
 			return ret;
