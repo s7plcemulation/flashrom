@@ -7616,31 +7616,31 @@ const struct flashchip flashchips[] = {
 		/* OTP: 256B total; read 0x4B, write 0xB1 */
 		.feature_bits	= FEATURE_WRSR_WREN | FEATURE_OTP,
 		.tested		= TEST_OK_PR,
-		.probe		= probe_spi_rdid,
+		.probe		= PROBE_SPI_RDID,
 		.probe_timing	= TIMING_ZERO,
 		.block_erasers	=
 		{
 			{
 				.eraseblocks = { {4 * 1024, 128} },
-				.block_erase = spi_block_erase_20,
+				.block_erase = SPI_BLOCK_ERASE_20,
 			}, {
 				.eraseblocks = { {4 * 1024, 128} },
-				.block_erase = spi_block_erase_d7,
+				.block_erase = SPI_BLOCK_ERASE_D7,
 			}, {
 				.eraseblocks = { {64 * 1024, 8} },
-				.block_erase = spi_block_erase_d8,
+				.block_erase = SPI_BLOCK_ERASE_D8,
 			}, {
 				.eraseblocks = { {512 * 1024, 1} },
-				.block_erase = spi_block_erase_60,
+				.block_erase = SPI_BLOCK_ERASE_60,
 			}, {
 				.eraseblocks = { {512 * 1024, 1} },
-				.block_erase = spi_block_erase_c7,
+				.block_erase = SPI_BLOCK_ERASE_C7,
 			}
 		},
 		.printlock	= spi_prettyprint_status_register_bp3_srwd, /* bit6 is quad enable */
 		.unlock		= spi_disable_blockprotect_bp3_srwd,
-		.write		= spi_chip_write_256,
-		.read		= spi_chip_read, /* Fast read (0x0B) and multi I/O supported */
+		.write		= SPI_CHIP_WRITE256,
+		.read		= SPI_CHIP_READ, /* Fast read (0x0B) and multi I/O supported */
 		.voltage	= {2700, 3600},
 	},
 
